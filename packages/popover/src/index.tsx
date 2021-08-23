@@ -121,8 +121,16 @@ function getTopPosition(
 ) {
   return {
     top: isDirectionUp
-      ? `${targetRect.top - popoverRect.height + window.pageYOffset}px`
-      : `${targetRect.top + targetRect.height + window.pageYOffset}px`,
+      ? `${
+          targetRect.top -
+          popoverRect.height -
+          document.body.getBoundingClientRect().top
+        }px`
+      : `${
+          targetRect.top +
+          targetRect.height -
+          document.body.getBoundingClientRect().top
+        }px`,
   };
 }
 
